@@ -88,4 +88,7 @@ def comment_remove(request, pk):
 	return redirect('blog.views.post_detail', pk=post_pk)
 
 def about(request):
-	return render(request, 'blog/about.html');
+	return render(request, 'blog/about.html')
+
+def registrationComplete(request):
+	return render(request, 'registration/registration_complete.html')

@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h1> Sėkmingai prisijungėte prie sistemos... </h1>                                                                              <br><br><br><br>
+<script>
+  function redirect(){
+    window.location.href = "{% url 'post_list' %}";
+  }
+
+  setTimeout(redirect, 1500);
+</script>
+{% endblock %}

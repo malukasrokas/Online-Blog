@@ -2,12 +2,19 @@
 
 {% block content %}
 
+<style>
+  .loginForm {
+    margin-left: 450px;
+    margin-top: 40px;
+  }
+</style>
+
 {% if form.errors %}
 <p>Neteisingas vartotojo vardas arba slaptažodis. Bandykite dar kartą.</p>
 {% endif %}
-
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
   {% csrf_token %}
+  <div class="loginForm">
   <table>
   <tr>
       <td>{{ form.username.label_tag }}</td>
@@ -19,9 +26,15 @@
   </tr>
   </table>
   <div class="bab">
-    <input type="submit" value="Prisijungti" />
+    <input class="logBtn" type="submit" value="Prisijungti" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
+  <p style="margin-top:15px; font-size:20px"> Naują vartotoją galite susikurti <a href='{% url 'registration_register' %}'>čia</a></p>
 </form>
+</div>
 
+<script>
+$("#id_username").prev("label").text("Vartotojo vardas");
+getElementById("id_username").innerHTML = "Vartotojo vardas"
+</script>
 {% endblock %}

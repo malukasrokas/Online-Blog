@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <html>
+
     <head>
         <title>Roko blogas</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -9,17 +10,13 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link rel="stylesheet" href="{% static 'css/footer.css' %}"
     </head>
+
+    <header>
+      {% include 'blog/header.html' %}
+    </header>
+
     <body>
-      <div class="page-header">
-          {% if user.is_authenticated %}
-          <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-          <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-          <p class="welcome">Sveiki, {{ user.username }}<small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Atsijungti</a>)</small></p>
-          {% else %}
-          <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-          {% endif %}
-          <h1><a href="{% url 'blog.views.post_list' %}">Roko Blogas</a></h1>
-      </div>
+      {% include 'blog/popup.html' %}
       <div class="content">
           <div class="row">
               <div class="col-md-8">
@@ -30,47 +27,11 @@
               </div>
           </div>
       </div>
+    </body>
 
-      <footer class="footer-distributed">
+  <footer>
+    {% include 'blog/footer.html' %}
+  </footer>
 
-        <div class="footer-left">
-
-          <h3>RokoBlogas</h3>
-
-          <p class="footer-links">
-            <a href=""{% url 'blog.views.post_list' %}"">Pradžia</a>
-            ·
-            <a href="{% url 'about' %}">Apie Mane</a>
-          </p>
-
-          <p class="footer-company-name">Roko Blogas &copy; 2016</p>
-
-          <div class="footer-icons">
-            <a href="https://www.facebook.com/rokas.rokelis.1?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="https://github.com/malukasrokas" target="_blank"><i class="fa fa-github"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-center">
-
-          <div>
-            <i class="fa fa-map-marker"></i>
-            <p><span>Vilniaus universitetas, MIF</span> Vilnius, Lithuania</p>
-          </div>
-
-          <div>
-            <i class="fa fa-phone"></i>
-            <p>8 623 15103</p>
-          </div>
-
-          <div>
-            <i class="fa fa-envelope"></i>
-            <p><a href="mailto:malukasrokas@gmail.com">malukasrokas@gmail.com</a></p>
-          </div>
-
-        </div>
-      </div>
-    </footer>
-  </body>
 
 </html>

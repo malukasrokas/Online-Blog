@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<style>
+.regForm {
+  margin-left: 500px;
+  border: 2px solid brown;
+  border-radius: 10%;
+}
+.regForm p {
+  width: 300px;
+  margin-left: 30px;
+}
+.regForm p input {
+  border-radius: 5px;
+  width: 300px;
+  border: 3px solid black;
+  padding: 10px;
+}
+.regForm span {
+  display: none;
+}
+</style>
+
+<div class="regForm" >
+<h1 style="margin-left:80px;">Registracija</h1>
+
+        <form method="post" action=".">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="logBtn" style="margin-left: 30px" type="submit" value="Registruotis" />
+        </form> </div>
+{% endblock %}
